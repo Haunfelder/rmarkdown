@@ -132,10 +132,10 @@ html_reference_path <- function(path, lib_dir, output_dir) {
 
 # return the html dependencies as an HTML string suitable for inclusion
 # in the head of a document
-html_dependencies_as_string <- function(dependencies, lib_dir, output_dir) {
+html_dependencies_as_string <- function(dependencies, lib_dir, output_dir, overwrite_dir = TRUE) {
 
   if (!is.null(lib_dir)) {
-    dependencies <- lapply(dependencies, copyDependencyToDir, lib_dir)
+    dependencies <- lapply(dependencies, copyDependencyToDir, lib_dir, overwrite_dir = overwrite_dir)
     dependencies <- lapply(dependencies, makeDependencyRelative, output_dir)
   }
   return(renderDependencies(dependencies, "file", encodeFunc = identity,

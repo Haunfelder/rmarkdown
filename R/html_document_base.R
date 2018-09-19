@@ -25,6 +25,7 @@ html_document_base <- function(smart = TRUE,
                                copy_resources = FALSE,
                                extra_dependencies = NULL,
                                bootstrap_compatible = FALSE,
+                               overwrite_dir = TRUE,
                                ...) {
 
   # default for dependency_resovler
@@ -97,7 +98,7 @@ html_document_base <- function(smart = TRUE,
     extras <- html_extras_for_document(knit_meta, runtime, dependency_resolver,
                                        format_deps)
     args <- c(args, pandoc_html_extras_args(extras, self_contained, lib_dir,
-                                            output_dir))
+                                            output_dir, overwrite_dir))
 
     # mathjax
     args <- c(args, pandoc_mathjax_args(mathjax,
